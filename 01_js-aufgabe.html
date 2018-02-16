@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>01_js-aufgabe</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+
+		<style>
+			fieldset {
+                width: 400px;
+                float: left;
+                margin-right: 20px;
+            }
+            form div {
+                margin-bottom: 15px;
+            }
+            label {
+                display: inline-block;
+                width: 125px;
+            }
+            form div:last-of-type {
+                /* content: " "; */
+                clear: both;
+            }
+            
+            .eingabeFehler {
+                border: 1px dotted red;
+                background-color: rgba(255,0,0,0.35);
+            }
+		</style>
+
+		<script>
+		
+		</script>
+	</head>
+	
+	<body>
+		<h1>JS Aufgaben: 1. Formularvalidierung</h1>
+        
+        <form>
+            <fieldset>
+                <legend>Angaben zur Person</legend>
+                <div>
+                    <label for="vName">Vorname</label>
+                    <input type="text" id="vName" name="vorname" placeholder="Vorname" />
+                </div>
+                <div>
+                    <label for="nName">Nachname</label>
+                    <input type="text" id="nName" name="nachname" placeholder="Nachname" />
+                </div>
+                <div>
+                    <label for="gebDatum">Geburtsdatum</label>
+                    <input type="date" id="gebDatum" name="geburt" placeholder="tt.mm.jjjj" />
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Angaben zum Hund</legend>
+                <div>
+                    <label for="str">Strasse</label>
+                    <input type="text" id="str" name="strasse" placeholder="Strasse" />
+                </div>
+                <div>
+                    <label for="nName">Nummer</label>
+                    <input type="text" id="strNr" name="nummer" placeholder="Nummer" />
+                </div>
+                <div>
+                    <label for="plz">PLZ</label>
+                    <input type="number" id="plz" name="plz" placeholder="PLZ" />
+                </div>
+                <div>
+                        <label for="ort">Hütte</label>
+                        <input type="text" id="ort" name="ort" placeholder="Hütte" />
+                    </div>
+            </fieldset>
+            <div>
+                <button type="button" onclick="pruefeForm();">Daten senden</button>
+            </div>
+            
+        </form>
+        
+        <script src="../script/jquery-3.3.1.min.js"></script>
+        <script src="http://10.10.52.131/script/js_functions.js"></script>
+        
+        <script>
+            /* jQuery */
+            $("input[type='text']").keyup(function(){
+                
+                if($(this).val().length < 3){
+                    //console.log(this.id);
+                   console.log(document.getElementById(this.id)); //entspricht $(this)
+                   console.log($(this));
+                    $(this).addClass('eingabeFehler');
+                } else {
+                    $(this).removeClass('eingabeFehler');
+                }
+            });
+
+            /* Javascript */
+            function pruefeForm() {
+                var vName = document.getElementById('vName');
+                if(vName.value.length < 4) {
+                    vName.className = "eingabeFehler";
+                    vName.focus();
+                } else {
+                    vName.className = "";
+                }
+            }
+        </script>
+        
+		
+	</body>
+</html>
