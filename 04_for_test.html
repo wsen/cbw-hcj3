@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>04_for_test</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<script src="http://10.10.52.131/script/js_functions.js"></script>
+		<style>
+			
+		
+		</style>
+
+		<script>
+		
+		</script>
+	</head>
+	
+	<body>
+		<h1>For Test</h1>
+		<h2>Primzahlen zwischen 1 und 100</h2>
+        <div id="ausgabe"></div>
+        
+        <script>
+            // for(var zahl=1; zahl<=100; zahl++) {
+            //     // $("#ausgabe").html(zahl+": ")
+            //     // console.log(zahl);
+            //     for(var divi=2; divi < (zahl/2); divi++) {
+            //         console.log(zahl);
+            //         if((zahl % divi) == 0) { 
+            //             console.log("machts");
+            //             $("#ausgabe").html(" . <br>");
+                        
+            //         } else { 
+            //             $("#ausgabe").html(zahl +"<br>");
+
+            //         }
+            //     }              
+            // }
+            var erg = "";
+            var res = "false";
+
+            for(var zahl=1; zahl<=100; zahl++) {
+                res = false;
+
+                for(var divi=2; divi < (zahl); divi++) {
+                    if(zahl % divi == 0) {
+                        res = false;
+                        break;                       
+                    } else { 
+                        res = true;                    
+                    }
+
+                 
+                }
+                if(res) {
+                        erg += " " + zahl + " ";
+                    } else {
+                        erg += " . ";
+                    }                           
+            }
+            $("#ausgabe").html(erg); 
+        </script>
+
+		<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+	</body>
+</html>

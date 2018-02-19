@@ -102,7 +102,7 @@
                     $(this).removeClass('eingabeFehler');
                 }
 
-                if (pruefeFS()) {
+                if (pruefeFS) {
                     $("#fs2").addClass("noAktiv");
                 } else {
                     $("#fs2").removeClass("noAktiv");
@@ -120,13 +120,13 @@
                 }
             }
 
-            function pruefeFS() {
+            var pruefeFS = function() {
                 var inArr = document.getElementById("fs1").getElementsByTagName("input");
                 console.log(inArr.value);
                 var inErr = 0;
                 for(var i=0; i<inArr.length; i++) {
                     
-                    if(inArr[i].value.length < 2 ) {
+                    if(inArr[i].value.length < 2 ) || (in) {
                         inErr = 1;
                         break;
                     }
@@ -134,6 +134,7 @@
                 
                 return inErr; //inErr;
             }
+            //console.log(pruefeFS);
         </script>	
 	</body>
 </html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>05_zahlenraten</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<script></script>
+		<style>
+			#ausgabe, form {
+                width: 400px;
+                text-align: center;
+                margin: 15px auto;
+            }
+            #ausgabe {
+                height: 75px;
+            }
+            #eingabe {
+                text-align: center;
+                font-size: 3em;
+                width: 75px;
+            }
+
+            .msgOk {
+                color: green;
+            }
+
+            .msgErr {
+                color: red;
+            }		
+		</style>
+
+		<script>
+            var zZahl = "";
+    
+            function zufall() {
+                // random
+                zZahl = Math.floor(Math.random()*100+1);
+                console.log(zZahl);
+            }
+
+            var pruefe = function () {
+                var input = $("#eingabe").val();
+                var ausgabe = $("#ausgabe");
+
+                if(input > zZahl) {
+                    ausgabe.addClass("msgErr");
+                    ausgabe.html("Die gesuchte Zahl ist kleiner");
+                } else if (input < zZahl) {
+                    ausgabe.addClass("msgErr");
+                    ausgabe.html("Die gesuchte Zahl ist größer");
+                } else {
+                    ausgabe.removeClass("msgErr");
+                    ausgabe.addClass("msgOk");
+                    ausgabe.html("Die gesuchte Zahl wurde erraten");
+                    zufall();
+                }
+            }
+
+            $("#eingabe").blur(pruefe);
+		
+		</script>
+	</head>
+	
+	<body onload="zufall();">
+		<h1>Zahlen Raten</h1>
+		<h2></h2>
+        
+        <div id="ausgabe"></div>
+        <div>
+            <form>
+                <label for="eingabe"></label>Eingabe</label>
+                <input type="text" id="eingabe" name="eingabe" onblur="pruefe();"/> 
+                <!--  onblur="pruefe(); -->
+
+            </form>
+        </div>
+        
+	</body>
+</html>
