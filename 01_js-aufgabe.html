@@ -25,7 +25,14 @@
             
             .eingabeFehler {
                 border: 1px dotted red;
-                background-color: rgba(255,0,0,0.35);
+                background-color: rgba(255,0,0,0.2);
+            }
+            .noAktiv {
+                display: none;
+            }
+            :disabled {
+                opacity: 0.5;
+                background-color: fuchsia;
             }
 		</style>
 
@@ -38,7 +45,7 @@
 		<h1>JS Aufgaben: 1. Formularvalidierung</h1>
         
         <form>
-            <fieldset>
+            <fieldset id="fs1">
                 <legend>Angaben zur Person</legend>
                 <div>
                     <label for="vName">Vorname</label>
@@ -54,11 +61,11 @@
                 </div>
             </fieldset>
 
-            <fieldset>
+            <fieldset id="fs2" class="noAktiv">
                 <legend>Angaben zum Hund</legend>
                 <div>
                     <label for="str">Strasse</label>
-                    <input type="text" id="str" name="strasse" placeholder="Strasse" />
+                    <input disabled type="text" id="str" name="strasse" placeholder="Strasse" />
                 </div>
                 <div>
                     <label for="nName">Nummer</label>
@@ -86,28 +93,47 @@
             /* jQuery */
             $("input[type='text']").keyup(function(){
                 
-                if($(this).val().length < 3){
+                if($(this).val().length < 2){
                     //console.log(this.id);
-                   console.log(document.getElementById(this.id)); //entspricht $(this)
-                   console.log($(this));
+                  // console.log(document.getElementById(this.id)); //entspricht $(this)
+                  // console.log($(this));
                     $(this).addClass('eingabeFehler');
                 } else {
                     $(this).removeClass('eingabeFehler');
+                }
+
+                if (pruefeFS()) {
+                    $("#fs2").addClass("noAktiv");
+                } else {
+                    $("#fs2").removeClass("noAktiv");
                 }
             });
 
             /* Javascript */
             function pruefeForm() {
                 var vName = document.getElementById('vName');
-                if(vName.value.length < 4) {
+                if(vName.value.length < 2) {
                     vName.className = "eingabeFehler";
                     vName.focus();
                 } else {
                     vName.className = "";
                 }
             }
-        </script>
-        
-		
+
+            function pruefeFS() {
+                var inArr = document.getElementById("fs1").getElementsByTagName("input");
+                console.log(inArr.value);
+                var inErr = 0;
+                for(var i=0; i<inArr.length; i++) {
+                    
+                    if(inArr[i].value.length < 2 ) {
+                        inErr = 1;
+                        break;
+                    }
+                }
+                
+                return inErr; //inErr;
+            }
+        </script>	
 	</body>
 </html>
