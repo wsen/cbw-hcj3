@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>016_try_catch_throw</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<script src="http://10.10.52.131/script/js_functions.js"></script>
+		<style>
+			
+		
+		</style>
+
+		<script>
+		setTimeout("x=3", 200);
+
+        function zeigeErgebnis (Zaehler, Ergebnis) {
+            alert("Nach " + (Zaehler) + 
+            " Durchläufen existierte x.\nDie Zahl x ist " + Ergebnis + ".");
+        }
+        function teste_x (Zaehler) {
+            try {
+                console.log(Zaehler);
+                if (x == 2) {
+                    console.log("try r");
+                    throw "richtig";
+                } else if (x == 3) {
+                    console.log("try f");
+                    throw "falsch";
+                }
+            } catch (e) {
+                if (e == "richtig") {
+                    console.log("catch r");
+                    zeigeErgebnis(Zaehler, e);
+                    return;
+                } else if (e == "falsch") {
+                    console.log("catch f");
+                    zeigeErgebnis(Zaehler, e);
+                    return;
+                }
+            } finally {
+                Zaehler++;
+            }
+            setTimeout("teste_x(" + Zaehler + ")", 30);
+        }
+        teste_x(0);
+
+		</script>
+	</head>
+	
+	<body>
+		<h1>016_try_catch_throw</h1>
+		
+	</body>
+</html>

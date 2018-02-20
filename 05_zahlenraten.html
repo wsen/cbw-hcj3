@@ -39,25 +39,40 @@
                 console.log(zZahl);
             }
 
+            function neuesSpiel() {
+                alert("Neues Spiel ?");
+                $("#eingabe").val('');
+                $("#ausgabe").html("Jetzt noch ein Jägermeister");
+                $("#eingabe").focus()
+            }
+
             var pruefe = function () {
                 var input = $("#eingabe").val();
                 var ausgabe = $("#ausgabe");
-
-                if(input > zZahl) {
+                if(isNaN(input)) {
+                    ausgabe.addClass("msgErr");
+                    ausgabe.html("KENE Zahl!");
+                    $("#eingabe").val('');
+                    // $("#eingabe").focus();
+                } else if (input > zZahl) {
                     ausgabe.addClass("msgErr");
                     ausgabe.html("Die gesuchte Zahl ist kleiner");
+                    // $("#eingabe").focus();
                 } else if (input < zZahl) {
                     ausgabe.addClass("msgErr");
                     ausgabe.html("Die gesuchte Zahl ist größer");
+                    // $("#eingabe").focus();
                 } else {
                     ausgabe.removeClass("msgErr");
                     ausgabe.addClass("msgOk");
                     ausgabe.html("Die gesuchte Zahl wurde erraten");
                     zufall();
+                    window.setTimeout(neuesSpiel, 2000);
                 }
+                $("#eingabe").focus(); // does not work this shit
             }
 
-            $("#eingabe").blur(pruefe);
+            // $("#eingabe").blur(pruefe);
 		
 		</script>
 	</head>
@@ -70,7 +85,7 @@
         <div>
             <form>
                 <label for="eingabe"></label>Eingabe</label>
-                <input type="text" id="eingabe" name="eingabe" onblur="pruefe();"/> 
+                <input autofocus type="text" id="eingabe" name="eingabe" onblur="pruefe();"/> 
                 <!--  onblur="pruefe(); -->
 
             </form>

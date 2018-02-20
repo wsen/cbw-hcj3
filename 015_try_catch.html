@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>015_try_catch</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<script src="http://10.10.52.131/script/js_functions.js"></script>
+		<style>
+			
+		
+		</style>
+
+		<script>
+        // [0, 1, 2, 3, 4].reduce(
+        //     function (
+        //         accumulator,
+        //         currentValue,
+        //         currentIndex,
+        //         array
+        //     ) {
+        //         return accumulator + currentValue;
+        //     }
+        // );
+
+
+		try{
+            // keine undefinedFunctions u Messages
+            // undefinedFunction()
+            alert('Made it, so undefinedFunction exists');
+            throw " Was soll das? ";
+        }
+        catch(ex){
+            alert('The following error occurred: ' + ex); //ex.message)
+        }
+        finally{
+            alert('Finally block executed');
+        }
+		</script>
+	</head>
+	
+	<body>
+		<h1>015_try_catch</h1>
+		
+	</body>
+</html>

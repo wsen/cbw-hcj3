@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>010 Nested function</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<script src="http://10.10.52.131/script/js_functions.js"></script>
+		<style>
+			
+		
+		</style>
+
+		<script>
+		function areaOfPizzaSlice(centimeter, slicesPerPizza) {
+			console.log("Flaeche der Pizzza: " + areaOfPizza(centimeter));
+
+			return areaOfPizza(centimeter) / slicesPerPizza;
+			function areaOfPizza(centimeter) {
+                var radius = centimeter / 2;
+                flaeche = 3.141592 * radius * radius;
+				//document.write("gesamtflaeche: " + flaeche + "<br />");
+				return flaeche;
+            }
+        }
+
+		document.write(areaOfPizzaSlice(50, 19));
+		// document.write(areaOfPizza(50)); !! not def
+		</script>
+	</head>
+	
+	<body>
+		<h1>Pizza inside Pizza function</h1>
+		<h2></h2>
+		
+		
+
+		<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>011 switch</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<script src="http://10.10.52.131/script/js_functions.js"></script>
+		<style>
+
+				
+		</style>
+
+		<script>
+		var age = prompt('Enter your age', '');
+        age = Number(age);
+        switch (true) {
+            case isNaN(age):
+                age = 0;
+                alert('You need to enter a valid number');
+                break;
+            case (age >= 50):
+                age = Number(age) + 1;
+                alert("You're old! You will soon be " + age + " years old!");
+                break;
+            case (age <= 20):
+                age = Number(age) + 1;
+                alert("You're a baby! You will soon be " + age + " years old!");
+                break;
+            default:
+                alert('You will soon be ' + (Number(age) + 1) + ' years old!');
+                break;
+        };
+		</script>
+	</head>
+	
+	<body>
+		<h1>011 Switch</h1>
+        <h2></h2>
+        
+        <form>
+            <input />
+        </form>
+		
+	</body>
+</html>

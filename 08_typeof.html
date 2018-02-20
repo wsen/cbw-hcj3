@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>08_typeof</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<script src="http://10.10.52.131/script/js_functions.js"></script>
+		<style>
+			
+		
+		</style>
+
+
+	</head>
+	
+	<body>
+		<h1>Typeof</h1>
+		<h2></h2>
+        <script>
+            var var1 = 15;
+            var var2 = "15";
+            var var3 = "otto";
+            var var4 = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod";
+            var var5 = var4.split(" ");
+            var var6 = new Array("Otto","Karl","George");
+            var6[3] = 123;
+            var6[var6.length] = "Maria";
+            	
+            prompt = function(){
+                return 'hello again';
+            };    
+
+
+            if(var2 > var3) {
+                document.write('der String 15 ist größer als "otto"<br /><hr />');
+            } else {
+                document.write('der String 15 ist nicht größer als "otto"  und wohl nicht def<br /><hr />');
+            }
+
+            if(var2 < var3) {
+                document.write('der String "15" ist kleiner als "otto"<br /><hr />');
+            } else {
+                document.write('der String "15" ist nicht kleiner als "otto" und wohl nicht def<br /><hr />');
+            }
+
+            document.write('die Variable var4 ist: ' + typeof(var4) + '<br />');
+            document.write('die Variable var5 ist: ' + typeof(var5) + '<br />');
+            document.write('die Variable var5: ' + var5[1] + ' ist: ' + typeof(var5[1]) + '<br />');
+            document.write('die Variable var6: ist: ' + typeof(var6) + '<br />');
+            document.write('die Variable var6[1]: ' + var6[1] + ' ist: ' + typeof(var6[1]) + '<br />');
+            document.write('die Variable var6[3]: ' + var6[3] + ' ist: ' + typeof(var6[1]) + '<br />');
+
+            document.write(prompt());
+
+            test = Number(var3);
+            console.log(test);
+            
+            // if(var1 === var2) {
+            //     document.write('die Zahl 15 ist gleich (===) "otto"<br />');
+            // } else {
+            //     document.write('die Zahl 15 ist nicht gleich (===) "otto"<br />');
+            // }
+
+        </script>
+	</body>
+</html>
