@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>018_arrays</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<script src="http://10.10.52.131/script/js_functions.js"></script>
+		<style>
+			
+		
+		</style>
+
+
+	</head>
+	
+	<body>
+		<h1>018 Array</h1>
+        
+        <code>
+            <pre>
+                var pizzaMeatParts = ['pepperoni', 'ham', 'bacon'];
+                var pizzaVegetableParts = ['pepper', 'onion'];
+            </pre>
+        </code>
+        <h2>concat():</h2>
+        <div id="ausgabe">Ausgabe der Array-Methoden:<br /></div>
+		
+		<!-- <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p> -->
+        <script>
+            var ausgabe = document.getElementById("ausgabe");
+
+            var pizzaMeatParts = ['pepperoni', 'ham', 'bacon'];
+            var pizzaVegetableParts = ['pepper', 'onion'];
+
+            var pizzaParts = pizzaMeatParts.concat(pizzaVegetableParts);
+            ausgabe.innerHTML += "concat(): " + pizzaParts.join(" - ") + "<br />";
+
+            var baconIndex = pizzaParts.indexOf('bacon');
+            ausgabe.innerHTML += "indexOf('bacon'): " + baconIndex + "<br />";
+
+            var lastItem = pizzaParts.pop();
+            ausgabe.innerHTML += "pop(): " + lastItem + "<br />";
+
+            var newLength = pizzaParts.push('prosciutto');
+            ausgabe.innerHTML += "push(): " + newLength + " Neue Länge des Arryas<br />";
+
+            var sortedArray = pizzaParts.sort();
+            ausgabe.innerHTML += "sort(): " + sortedArray + "<br />";
+        </script>
+    </body>
+</html>

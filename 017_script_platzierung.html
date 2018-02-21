@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>017_script_platzierung</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+        <script src="http://10.10.52.131/script/js_functions.js"></script>
+        <style>
+			
+        </style>
+        
+<!-- Javascript immer NACH CSS -->
+		<script>
+            var ersatzText = "Das ist ein neuer div-Inhalt.";
+
+            var wechsel = function () {
+                // $("#d1").replaceWith(ersatzText);
+                document.getElementById("d1").innerHTML = ersatzText;
+            }
+            // wechsel(); //HIER NIX FUNKTIONIEREN TUN !
+            // $(document).ready(wechsel); // ODER wenn document ready
+		</script>
+	</head>
+	
+	<body>
+        <h1>017_script_platzierung</h1>
+        <div id="d1" onclick="wechsel()">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+        </div>
+
+        
+        
+		<script>
+            $("#d1").onClick(wechsel)
+            //wechsel(); //SONDERN HIER
+        </script>
+		<!-- <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p> -->
+	</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>020_event_listener</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<script src="http://10.10.52.131/script/js_functions.js"></script>
+		<style>
+			div {
+                border: 1px solid navy;
+                margin-top: 100px;
+                margin-left: 100px;
+                box-sizing: border-box
+            }
+            #d1 {
+                background-color: yellow;
+                width: 500px;
+                height: 500px;
+                margin: 25px auto;
+            }
+            #d2 {
+                background-color: tomato;
+                width: 300px;
+                height: 300px;
+            }
+            #d3 {
+                background-color: silver;
+                width: 100px;
+                height: 100px;
+            }
+            #d1.geklickt, #d2.geklickt, #d3.geklickt {
+                background-color: fuchsia;
+            }
+		
+        </style>
+
+		<script>
+            window.onload = init;
+
+            function init() {
+                document.getElementById('d1').addEventListener('click', zeigeKlasse, false);
+                document.getElementById('d2').addEventListener('click', zeigeKlasse, false);
+                document.getElementById('d3').addEventListener('click', zeigeKlasse, false);
+            } 
+
+            function zeigeKlasse(elem) {
+                console.log(this.id);
+                this.className = 'geklickt';
+                this.removeEventListener('click', zeigeKlasse, false);
+                //evt.stopPropagation(); // now: removeEventListener
+            }
+
+            function zeigeKlasse_d1(evt) {
+                document.getElementById("d1").className = 'geklickt';
+                evt.stopPropagation();
+            }
+
+            function zeigeKlasse_d2(evt) {
+                document.getElementById("d2").className = 'geklickt';
+                //evt.stopPropagation(alert("d2"));
+            }
+
+            function zeigeKlasse_d3(evt) {
+                document.getElementById("d3").className = 'geklickt';
+                //evt.stopPropagation(alert("d3"));
+            }
+		
+		</script>
+	</head>
+	
+	<body>
+		<h1>020_event_listener</h1>
+		<!-- <h2>zweite &Uuml;berschrift der Seite</h2> -->
+        <div id="d1"> <!-- onclick="zeigeKlasse(this);"> -->
+            <div id="d2">
+                <div id="d3">
+
+                </div>
+            </div>
+        </div>
+        
+		<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+	</body>
+</html>

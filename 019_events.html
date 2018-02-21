@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>019_events</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<script src="http://10.10.52.131/script/js_functions.js"></script>
+		<style>
+			.geklickt {
+                background-color: tomato;
+            }
+		</style>
+
+		<script>
+            window.onload = init;
+
+            function init () {
+                document.getElementById("interaktiv").onmouseover = klickverarbeitung1;
+                document.getElementById("interaktiv").onmouseout = klickverarbeitung3;
+                document.getElementById("interaktiv").onclick = klickverarbeitung2;
+            }
+
+            function klickverarbeitung1() {
+                document.getElementById("interaktiv").className = "geklickt";
+            }
+
+            function klickverarbeitung2() {
+                document.getElementById("interaktiv").innerHTML += "<br /><b> Dieser Täxt ist PHÄNOMINAL<b/>";
+            }
+
+            function klickverarbeitung3() {
+                document.getElementById("interaktiv").className = "";
+            }
+		</script>
+	</head>
+	
+	<body>
+		<h1>Überschrift der Seite</h1>
+		<h2>zweite &Uuml;berschrift der Seite</h2>
+		
+		<p id="interaktiv" onclick="klickverarbeitung1()">Dies ist ein einfacher Textabsatz, aber mit Hilfe von JavaScript können wir ihn aktiv gestalten.
+            Klicken Sie diesen Absatz doch einfach mal mit der Maus an. Lorem ipsum dolor sit amet</p>
+	</body>
+</html>

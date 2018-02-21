@@ -12,34 +12,28 @@
 		</style>
 
 		<script>
-        // [0, 1, 2, 3, 4].reduce(
-        //     function (
-        //         accumulator,
-        //         currentValue,
-        //         currentIndex,
-        //         array
-        //     ) {
-        //         return accumulator + currentValue;
-        //     }
-        // );
-
-
-		try{
+        <!--
+		try {
             // keine undefinedFunctions u Messages
             // undefinedFunction()
             alert('Made it, so undefinedFunction exists');
             throw " Was soll das? ";
-        }
-        catch(ex){
+        } catch(ex) {
             alert('The following error occurred: ' + ex); //ex.message)
-        }
-        finally{
+        } finally {
             alert('Finally block executed');
         }
+        //-->
+        // HTML auskommentieren für abgeschaltete Browser !!
+        // Doppelslash als Comment for JS
 		</script>
 	</head>
 	
 	<body>
+        <noscript>
+            Nur angezeigt wenn Scriptfunktinalität abgeschaltet ist !
+        </noscript>
+
 		<h1>015_try_catch</h1>
 		
 	</body>
