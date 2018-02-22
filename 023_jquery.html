@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>023_jquery</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		
+		<script src="http://10.10.52.131/script/js_functions.js"></script>
+		<style>
+            .meineKlasse {
+                background-color: tomato;
+            }
+
+            .meineKlasseFett {
+                font-weight: bold;
+            }
+		</style>
+	</head>
+	
+	<body>
+		<h1>023 jquery</h1>
+        <!-- <h2>zweite &Uuml;berschrift der Seite</h2> -->
+        
+        <div id="abs2" class="meineKlasse">
+                Lorem ipsum <b>2 </b> dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                 invidun ut labore et dolore magna aliquyam erat, sed diam voluptua.
+        </div>
+        <p id="abs1" class="meineKlasse">
+                Lorem ipsum <b>dolor</b> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                 invidun ut labore et dolore magna aliquyam erat, sed diam voluptua.
+        </p>
+        
+        <p>
+            <input type="text" id="txt1" value="erstes Feld" />
+            <input type="text" id="txt2" value="zweites Feld" />
+        </p>
+    <hr />
+
+		<!-- <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p> -->
+        <script src="../script/jquery-3.3.1.min.js"></script>
+        <script>
+            var abs = $("#abs1"); // jQuery
+            var abs2 = $("#abs1")[0]; //HTML-Javascript
+
+            console.log(typeof abs2);
+
+            var absInhalt = abs.html();
+            var abs2Inhalt = abs2.innerHTML;
+
+            document.write("jQuery: " + absInhalt + "\nHTML-JavaScript: " + abs2Inhalt +"<br />");
+
+            document.write($("#txt1").val() + "\n" + $("#txt2").val() + "<br />");
+            document.write($("input[type='text']") +"<br />");
+
+            var alleInputs = $("input[type='text']");
+            //document.write(alleInputs[1].val());
+
+            document.write("<hr />");
+            var eachAusgabe = "<b>eachAusgabe</b>: <br />";
+            $("input[type='text']").each(function() {
+                eachAusgabe += $(this).val() + "<br />";
+            });
+
+            document.write(eachAusgabe);
+            document.write(alleInputs[1].value  + "<hr />");
+
+            var alleKlassen = $(".meineKlasse");
+            document.write("innerHTML:" + alleKlassen[0].innerHTML + "<br />");
+            document.write("value: " + alleKlassen[1].value + "<br />");
+
+            $("p").addClass("meineKlasseFett");
+
+        </script>
+    </body>
+</html>

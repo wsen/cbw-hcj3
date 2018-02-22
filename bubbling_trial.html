@@ -30,11 +30,15 @@
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript">
 			window.onload = function () {
+			// -- bubbeln
+			// Klick auf Element breitet sich nach außen
 			document.getElementById("outerB").addEventListener("click", outerDivClick, false);
 			document.getElementById("middleB").addEventListener("click", middleDivClick, false);
 			document.getElementById("innerB").addEventListener("click", innerDivClick, false);
 			document.getElementById("clearButtonB").addEventListener("click", clearList);
 			
+			// -- capturen
+			// Klick auf Element, das Element selbst ist das Ziel
 			document.getElementById("outerC").addEventListener("click", outerDivClick, true);
 			document.getElementById("middleC").addEventListener("click", middleDivClick, true);
 			document.getElementById("innerC").addEventListener("click", innerDivClick, true);
@@ -42,30 +46,29 @@
 			}
 			
 			function outerDivClick() {
-			appendText("outer Div Clicked",this.id);
+				appendText("outer Div Clicked",this.id);
 			}
 			function middleDivClick(ev) {
-			appendText("middle Div Clicked",this.id);
-			//ev.stopPropagation(); 
-			// Methode des Prevent Objekts
+				appendText("middle Div Clicked",this.id);
+			
 			}
 			function innerDivClick(e) {
-			appendText("inner Div Clicked",this.id);
-			//e.stopPropagation();
+				appendText("inner Div Clicked",this.id);
+				e.stopPropagation();
 			}
 			
 			function appendText(s,cont) {
-			var bereich = cont.slice(-1);
-			var li = document.createElement("li");
-			li.innerHTML = s;
-			document.getElementById("eventOrder"+bereich).appendChild(li);
+				var bereich = cont.slice(-1);
+				var li = document.createElement("li");
+				li.innerHTML = s;
+				document.getElementById("eventOrder"+bereich).appendChild(li);
 			}
 			function clearList() {
-			var bereich = this.id.slice(-1);
-			var ol = document.createElement("ol");
-			ol.id = "eventOrder"+bereich;
+				var bereich = this.id.slice(-1);
+				var ol = document.createElement("ol");
+				ol.id = "eventOrder"+bereich;
 			
-			document.getElementById("eventOrder"+bereich).innerHTML="";
+				document.getElementById("eventOrder"+bereich).innerHTML="";
 			}
 		</script>
 	</head>
@@ -74,10 +77,10 @@
 	<div id="bubble">
 	<h3>false - bubbling</h3>
 		<div id="outerB">
-		<div id="middleB" >
-		<div id="innerB">
-		</div>
-		</div>
+			<div id="middleB" >
+				<div id="innerB">
+				</div>
+			</div>
 		</div>
 		<ol id="eventOrderB"> </ol>
 		<button type="button" id="clearButtonB">Clear</button>
@@ -86,10 +89,10 @@
 	<div id="capture">
 	<h3>true - capture</h3>
 		<div id="outerC">
-		<div id="middleC" >
-		<div id="innerC">
-		</div>
-		</div>
+			<div id="middleC" >
+				<div id="innerC">
+				</div>
+			</div>
 		</div>
 		<ol id="eventOrderC"> </ol>
 		<button type="button" id="clearButtonC">Clear</button>

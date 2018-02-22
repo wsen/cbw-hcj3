@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Seitentitel</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<script src="http://10.10.52.131/script/js_functions.js"></script>
+		<style>
+			
+		
+		</style>
+
+		
+	</head>
+	
+	<body>
+		<h1>Parsen</h1>
+		<h2>Math-Methoden: parseInt() und parseFloat()</h2>
+		
+		<!-- <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p> -->
+        <script>
+            var zahl1 = 17.55;
+            var zahl2 = "29,35";
+            var zahl3 = "29,35 Euro";
+            var zahl4 = "29.35 Euro";
+            var zahl5 = "Euro 29,35";
+            var zahl6 = "Euro 29.35";
+
+            document.write("1) Die Zahl 17.55 ergibt bei parseInt: " + typeof parseInt(zahl1) + " <b>" + parseInt(zahl1) + "</b><br />");
+            document.write("2) Der String 17.55 ergibt bei parseFloat: " + typeof parseFloat("17.55") + " <b>" + parseFloat("17.55") + "</b><br />");
+            document.write("3) Der String 29,35 ergibt bei parseFloat: " + typeof parseFloat(zahl2) + " <b>" + parseInt(zahl2) + "</b><br />");
+            document.write("4) Der String 29,35 ergibt bei parseInt: " + typeof parseInt(zahl2) + " <b>" + parseInt(zahl2) + "</b><br />");
+            document.write("5) Der String 29.35 Euro ergibt bei parseFloat: " + typeof parseFloat(zahl3) + " <b>" + parseFloat(zahl3) + "</b><br />");
+            document.write("6) Der String 29.35 Euro ergibt bei parseInt: " + typeof parseInt(zahl3) + " <b>" + parseInt(zahl3) + "</b><hr />");
+
+            document.write("7) Der String Euro 29.35 ergibt bei parseFloat: " + typeof parseFloat(zahl4) + " <b>" + parseFloat(zahl4) + "</b><br />");
+            document.write("8) Der String Euro 29.35 ergibt bei parseInt: " + typeof parseInt(zahl4) + " <b>" + parseInt(zahl4) + "</b><br />");
+            document.write("9) Der String Euro 29,35 ergibt bei parseFloat: " + typeof parseFloat(zahl5) + " <b>" + parseFloat(zahl5) + "</b><br />");
+            document.write("10) Der String Euro 29,35 ergibt bei parseInt: " + typeof parseInt(zahl5) + " <b>" + parseInt(zahl5) + "</b><br />");
+            document.write("11) Der String Euro 29.35 ergibt bei parseFloat: " + typeof parseFloat(zahl6) + " <b>" + parseFloat(zahl6) + "</b><br />");
+            document.write("12) Der String Euro 29.35 ergibt bei parseInt: " + typeof parseInt(zahl6) + " <b>" + parseInt(zahl6) + "</b><br />");
+		</script>
+    </body>
+</html>
