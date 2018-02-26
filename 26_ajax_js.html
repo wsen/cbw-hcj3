@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Seitentitel</title>
+		<meta charset="utf-8" />
+		<link href="../styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+	
+	
+	<style>
+	
+	
+	</style>
+	
+	</head>
+	<body>
+	<form>
+	
+	<input type="text" name="z1" id="z1" /><br />
+		
+	
+	<select id="rArt">
+	<option value="add">Plus</option>
+	<option value="min">Minus</option>
+	<option value="mal">mal</option>
+	<option value="div">geteilt</option>
+	</select>
+	
+	<input type="text" name="z2" id="z2" />
+	<input readonly type="text" name="erg" id="erg" />
+	<button id="btn" type="button">Rechner</button>
+	
+	</form>
+	
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<!-- <script src="http://10.10.52.131/script/js_functions.js"></script> -->
+
+		<!-- eigene script -->
+		<script>
+
+			var xmlhttp;
+			// IE7+, Firefox, Chrome, Opera, Safari
+			if(window.XMLHttpRequest) {
+				 xmlhttp = new XMLHttpRequest();
+			} else { // I5 & IE6
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+		
+			window.onload = function () {
+				document.getElementById("btn").addEventListener("click", foo, false)
+			}
+		
+		function foo() {
+			var z1 = document.getElementById("z1").value;
+			var z2 = document.getElementById("z2").value;
+			var rArt = document.getElementById("rArt").value;
+			var sendStr = "?z1=" + z1 + "&z2=" + z2 + "&rArt=" + rArt;
+			xmlhttp.open("GET","../script/ajax_rechner.php" + sendStr,true);
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("erg").value = xmlhttp.response;
+				}
+			};
+
+			xmlhttp.send();
+		}
+		
+		
+		</script>
+	</body>
+</html>

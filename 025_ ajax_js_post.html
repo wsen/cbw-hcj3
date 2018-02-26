@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Seitentitel</title>
+    <meta charset="utf-8" />
+    <link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+    
+    <style>
+    </style>
+
+    <script>
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Überschrift der Seite</h1>
+    <!-- <h2>zweite &Uuml;berschrift der Seite</h2> -->
+
+    <!-- <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p> -->
+    <form action="../script/formularversand.php;" id="mathForm" name="mathForm">
+        Enter X:<input type="text" id="x"  name="xx" /><br/> 
+        Enter Y:<input type="text" id="y"  name="yy"  /><br> 
+        Result:<span id="result"></span><br>
+        <button id="btnSubmit" type="submit">Add mit Submit</button>
+        <button id="btnAdd" type="button" onclick="senden();">Add mit Button</button>
+        <button id="btnPost" type="button" onclick"senden_post()" >Add mit Post</button>
+    </form>
+    <script src="../script/jquery-3.3.1.min.js"></script>
+    <!-- <script src="http://10.10.56.136/script/js_functions.js"></script> 
+    -->
+    <script>
+        var xmlhttp;
+        // IE7+, Firefox, Chrome, Opera, Safari
+        if(windowXMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else { // I5 & IE6
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        function senden() {
+            var xx = document.getElementById("x").value;
+            var yy = document.getElementById("y").value;
+            var sendStr = "?xx=" + xx + "&yy=" + yy;
+
+            var xmlhttp=new XMLHttpRequest(); 
+            xmlhttp.open("GET","../script/formularversand.php"+sendStr,true); //true = asynchron 
+            
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var xmlDoc=xmlhttp.response;
+                    document.getElementById("result").innerHTML = xmlDoc;
+                } else {
+                    document.getElementById("result").innerHTML = "Daten werden vermeintlich geladen."
+                }
+            };
+            xmlhttp.send();
+        }
+
+
+        function senden_post() {
+            var xx = document.getElementById("x").value;
+            var yy = document.getElementById("y").value;
+            var sendStr = "xx=" + xx + "&yy=" + yy;
+
+            xmlhttp.open("POST","../script/formularversand.php");
+            xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencode");
+
+            xmlhttp.onreadystatechange = function() {
+                console.log(xml.http.readyState - " - " -xmlhttp.status);
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    // var xmlDoc=xmlhttp.response;
+                    document.getElementById("result").innerHTML = xmlhttp.response;
+                } else {
+                    document.getElementById("result").innerHTML = "Daten werden vermeintlich geladen."
+                }
+            };
+            xmlhttp.send(sendStr);
+        }
+    
+    </script>
+    <img src="../media/images/Koala_klein.jpg" />
+    </body>
+
+</html>
