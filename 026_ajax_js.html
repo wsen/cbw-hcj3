@@ -5,14 +5,8 @@
 		<meta charset="utf-8" />
 		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
 		<script src="../script/jquery-3.3.1.min.js"></script>
-		<style>
-			
-		
+		<style>		
 		</style>
-
-		<script>
-		
-		</script>
 	</head>
 	
 	<body>
@@ -21,7 +15,7 @@
         <!-- <form action="../script/ajax_rechner.php;" id="mathForm" name="mathForm"> -->            
         <form id="myForm" name="mathForm">
             <input type="text" name="z1" id="z1" />
-            <select>
+            <select id="rArt">
                 <option value="add">plus</option>
                 <option value="min">minus</option>
                 <option value="mal">mal</option>
@@ -29,17 +23,21 @@
             </select>
             <input type="text" name="z2" id="z2" />
             <hr />
-            <input readonly type="text" name="rArt" id="rArt"  />
-            <button id="btnr" type="button" onclick="foo();"> Rechne </button>
+            <input readonly type="text" id="erg"  /><!-- name="erg" --> 
+            <button id="btn" type="button" onclick="foo();"> Rechne </button>
         </form>
 		
     <script>
-        var z1 = "";
-        var z2 = "";
-        var rArt = "";
-
         window.onLoad = function() {
             document.getElementById('btn').addEventListener('click',foo,false);
+        }
+
+        var xmlhttp;
+			// IE7+, Firefox, Chrome, Opera, Safari
+        if(window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else { // I5 & IE6
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
 
         function foo () {
@@ -47,16 +45,18 @@
             var z2 = document.getElementById("z2").value;
             var rArt = document.getElementById("rArt").value;
                 
-            var sendStr = "?xx=" + z1 + "&yy=" + z2 + "&rArt" + rArt;
-            console.log($("#myForm").serialize());
-            // xmlhttp.open("GET","http://localhost/script/ajax_rechner.php" + sendStr, true);
-            xmlhttp.open("GET","ajax_rechner.php" + sendStr,true);
+            var sendStr = "?z1=" + z1 + "&z2=" + z2 + "&rArt=" + rArt;
+            var sendStr2 = $("#myForm").serialize();
+            console.log(sendStr);
+            console.log("--");
+            console.log(sendStr2);
+            xmlhttp.open("GET","../script/ajax_rechner.php" + sendStr,true);
             xmlhttp.onreadystatechange = function() {
                 if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                   document.getElmentById("erg").value = xmlhttp.response;
+                   document.getElementById("erg").value = xmlhttp.responseText;
                 }
             };
-            xmlhttp.send(sendStr);
+            xmlhttp.send();
         }          
 
     </script>

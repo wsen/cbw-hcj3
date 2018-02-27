@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>030_ajax_load</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<!-- <script src="http://10.10.52.131/script/js_functions.js"></script> -->
+		<style>		
+		
+		</style>
+
+
+	</head>
+	
+	<body>
+		<h1>030 AJAX LOAD</h1>
+		<p id="dynamic01">
+                Mit Javascript soll die Zeit des Servers ausgegeben werden.
+        </p>
+        <hr />
+        <p id="dynamic02">
+                Mit Ajax soll die Zeit des Servers ausgegeben werden.
+        </p>
+        <button id="time" type="button">
+           Server Time
+        </button>
+        
+        <script>
+            var heute = new Date();
+            document.getElementById("dynamic02").innerHTML = heute;
+            $("#time").click(function(){
+                $("#dynamic01").load("../script/server_time.php",
+                    // function(response,status,xhr)
+                    //   response - contains the result data from the request
+                    //   status - contains the status of the request ("success", "notmodified", "error", "timeout", or "parsererror")
+                    //   xhr - contains the XMLHttpRequest object
+                    function(responseTxt, statusTxt, xhr) {
+                        if(statusTxt == "success") {
+                        // alert("Externe Datei erfolgreich geladen")
+                        alert("responseTxt: " + responseTxt);
+                    }
+
+                    if(statusTxt == "error") {
+                        alert("Fehler:" +xhr.status+ ":" +xhr.statusText);
+                    }
+                });
+            });
+
+        </script>
+	</body>
+</html>

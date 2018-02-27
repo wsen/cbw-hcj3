@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<personen>
+    <person geschlecht="m" persId="001">
+        <nachname>Lottermann</nachname>
+        <vorname>Erwin</vorname>
+        <email>erwin@gmx.de</email>
+    </person>
+    <person geschlecht="w" persId="002">
+        <nachname>Huana</nachname>
+        <vorname>Marie</vorname>
+        <email>marie@gmail.de</email>
+    </person>
+    <person geschlecht="m" persId="003">
+        <nachname>Reich</nachname>
+        <vorname>Wilhelm</vorname>
+        <email>w.reich@rettich.de</email>
+    </person>        
+</personen>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>029_ajax_xml</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<style>
+			
+		
+		</style>
+	</head>
+	
+	<body>
+		<h1>029_ajax_xml</h1>
+		<script>
+            window.onload = ladePersonen;
+            function ladePersonen () {
+                var xmlhttp;
+                // IE7+, Firefox, Chrome, Opera, Safari
+                if(window.XMLHttpRequest) {
+                    xmlhttp = new XMLHttpRequest();
+                } else { // I5 & IE6
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                console.log("readyState VOR open: " + xmlhttp.readyState);
+                xmlhttp.open("GET","personen.xml",true);
+                console.log("readyState NACH open: " + xmlhttp.readyState);
+                xmlhttp.onreadystatechange = function () {
+                    console.log("readyState in readystatechange: " + xmlhttp.readyState);
+                    if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        var xml = xmlhttp.responseXML;
+                        console.log("readyState if4 in readystatechange: " + xmlhttp.readyState);
+                        console.log(typeof(xml));
+                        alert(xml.getElementsByTagName("person").length);
+                        // console.log(respArr);
+                    // document.getElementById("dynamic02").innerHTML += "<br />" + respArr[0] + "<br />" + respArr[1]; 
+                    //xmlhttp.responseText;
+                    }
+                };
+                
+                console.log("readyState VOR send: " + xmlhttp.readyState);
+                xmlhttp.send();
+                console.log("readyState NACH send: " + xmlhttp.readyState);
+            }
+        </script>		
+	</body>
+</html>

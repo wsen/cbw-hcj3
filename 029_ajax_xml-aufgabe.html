@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>029_ajax_xml_task</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<style>
+			#persTbl td {
+                border-width: 1px;
+                border-style: solid;
+                color:  black;
+                padding:  5px;
+
+            }
+		
+		</style>
+	</head>
+	
+	<body>
+        <h1>Personendaten aus XML</h1>
+        <table id="persTbl">
+            
+        </table>
+
+		<script>
+            window.onload = ladePersonen;
+            function ladePersonen () {
+                var xmlhttp;
+                // IE7+, Firefox, Chrome, Opera, Safari
+                if(window.XMLHttpRequest) {
+                    xmlhttp = new XMLHttpRequest();
+                } else { // I5 & IE6
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                xmlhttp.open("GET","personen.xml",true);
+                xmlhttp.onreadystatechange = function () {
+                    if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        var xml = xmlhttp.responseXML;
+                        var persAnz = xml.getElementsByTagName("person").length;
+                        var persArr = xml.getElementsByTagName("person");
+                        var ausgabe="<tr><th>PersID</th><th>Nachname</th><th>Vorname</th><th>Geschlecht</th><th>Email</th></tr>";
+                        var currPers;
+                        for(var i=0; i<persAnz; i++) {
+                            currPers = persArr[i];
+                           //nachname = currPers.children[0].textContent;
+                            nachname = currPers.getElementsByTagName("nachname")[0].textContent;
+                            //currPers.children[0].textContent;
+                            vorname  = currPers.children[1].textContent;
+                            email    = currPers.children[2].textContent;
+                            geschlecht =  currPers.getAttribute("geschlecht");
+
+
+                            console.log(currPers);
+
+                            ausgabe += "<tr><td>"+currPers.getAttribute("persId") + "</td><td>" + 
+                                    nachname + "</td><td>" + 
+                                    vorname + "</td><td>" + 
+                                    geschlecht + "</td><td>" + 
+                                    email + "</td></tr>"; 
+                        }
+                        document.getElementById("persTbl").innerHTML = ausgabe;   
+                        
+                    }
+                };
+                
+                xmlhttp.send();
+
+                
+            }            
+        </script>		
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>028_ajax</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<!-- <script src="http://10.10.52.131/script/js_functions.js"></script> -->
+		<style>		
+		
+		</style>
+
+
+	</head>
+	
+	<body>
+		<h1>028 AJAX</h1>
+		<p id="dynamic01">
+                Mit Javascript soll die Zeit des Servers ausgegeben werden.
+        </p>
+        <hr />
+        <p id="dynamic02">
+                Mit Ajax soll die Zeit des Servers ausgegeben werden.
+        </p>
+        <button type="button" onclick="zeitstempel()">
+        Zeit erneuern mit lokalem JavaScript
+        </button>
+
+        <button type="button" onclick="changeContent()">
+                Zeit erneuern mit server php Skript
+                </button>
+        
+        <script>
+        function zeitstempel() {
+            var heute = new Date();
+            document.getElementById("dynamic01").innerHTML=heute;
+        }
+
+        function changeContent () {
+            var xmlhttp;
+			// IE7+, Firefox, Chrome, Opera, Safari
+            if(window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else { // I5 & IE6
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.open("GET","../script/server_time.php",true);
+            xmlhttp.onreadystatechange = datenLaden;
+            
+            function datenLaden () {
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    console.log(xmlhttp.responseText);
+                    var respArr = JSON.parse(xmlhttp.responseText);
+                    // console.log(respArr);
+                   document.getElementById("dynamic02").innerHTML += "<br />" + respArr[0] + "<br />" + respArr[1]; 
+                   //xmlhttp.responseText;
+                }
+            };
+            xmlhttp.send();
+        }
+
+        </script>
+	</body>
+</html>

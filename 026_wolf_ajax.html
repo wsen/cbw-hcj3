@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Einfaches Ajax-Beispiel</title>
+<script>
+    function changeContent() {
+    var xmlhttp;
+    // IE7+, Firefox, Chrome, Opera, Safari
+    if(window.XMLHttpRequest) {
+        xmlhttp=new XMLHttpRequest();
+    } else { // I5 & IE6
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function() {
+        if(xmlhttp.readyState==4 && xmlhttp.status==200) {
+        document.getElementById("dynamic01").innerHTML =
+     xmlhttp.responseText;
+    }
+    }
+    xmlhttp.open("GET", ../script/server-time.php", true);
+    xmlhttp.send();
+    }
+    function zeitstempel() {
+        var heute = new Date();
+        document.getElementById("dynamic02").innerHTML=heute;
+    }
+</script>
+</head>
+<body onload="zeitstempel()">
+    <p id="dynamic01">
+    Mit Ajax soll die Zeit des Servers ausgegeben werden.
+    </p>
+    <button type="button" onclick="changeContent()">
+    Zeit erneuern
+    </button>
+    <p id="dynamic02"></p>
+</body>
+</html>
