@@ -29,6 +29,7 @@
         <script>
             var heute = new Date();
             document.getElementById("dynamic02").innerHTML = heute;
+
             $("#time").click(function(){
                 $("#dynamic01").load("../script/server_time.php",
                     // function(response,status,xhr)
@@ -40,7 +41,6 @@
                         // alert("Externe Datei erfolgreich geladen")
                         alert("responseTxt: " + responseTxt);
                     }
-
                     if(statusTxt == "error") {
                         alert("Fehler:" +xhr.status+ ":" +xhr.statusText);
                     }

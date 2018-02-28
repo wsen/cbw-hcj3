@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>033_jquery_post</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<style>		
+		</style>
+	</head>
+	
+	<body>
+        <h1>033_jquery_post</h1>
+        
+        <!-- <form action="../script/ajax_rechner.php;" id="mathForm" name="mathForm"> -->            
+        <form id="myForm" name="mathForm">
+            <input type="text" name="z1" id="z1" />
+            <select id="rArt">
+                <option value="add">plus</option>
+                <option value="min">minus</option>
+                <option value="mal">mal</option>
+                <option value="geteilt">geteilt</option>
+            </select>
+            <input type="text" name="z2" id="z2" />
+            <hr />
+            <input readonly type="text" id="erg"  /><!-- name="erg" --> 
+            <button id="btn" type="button"> Rechne </button>
+        </form>
+        <hr />
+        Ausgabe
+        <p id="ausgabe"></p>
+        Ausgabe 2:
+        <p id="ausgabe2"></p>
+		
+    <script>
+
+        function addNumbers() {
+            var z1 = $('#z1').val();
+            var z2 = $('#z2').val();
+            var rArt = $("#rArt").val();
+
+            var myData = { "z1": z1, "z2": z2, "rArt": rArt };
+
+            $.post("../script/formularversand.php",
+                myData,
+                function(data, status) {
+                    console.log("data: " + '' + data);
+                    // console.log('jQuery:  { "z1": z1, "z2": z2, "rArt": rArt }');
+                    // console.log("jQuery: " + myData);
+                    // console.log( myData + "soll ein jQuery sein" );
+                    console.log(myData);
+                    console.log("JavaScript " + $("#myForm").serialize());
+                    console.log("data: " + status);
+
+                    if(status=="success") {
+                        $("#ausgabe").html(data);
+                        $("#ausgabe2").html(erg);
+                    }                
+                }, "text"
+            );
+        }
+
+         $("#btn").click(addNumbers);
+
+    </script>
+    
+    </body>
+</html>
