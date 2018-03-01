@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>036_canvas_rotate</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<style>
+            div { text-align: center; }
+            #myCanvas { 
+                border: 1px solid red;
+                background-color: burlywood;
+                display: block;
+                margin: 10px auto;
+            }
+		</style>
+	</head>
+	
+	<body>
+		<h1>036_canvas_rotate</h1>
+		<!-- <h2>zweite &Uuml;berschrift der Seite</h2> -->
+        <canvas id="myCanvas" width="800" height="600">
+            You need a browser that supports HTML5!
+        </canvas>
+
+        <button type="button" id="drehen">Ich canvas drehen</button>
+
+        
+
+
+		<script>
+            var canvas = document.getElementById('myCanvas');
+            var ctx = canvas.getContext('2d');
+
+            
+
+            function dreheRect() {
+                ctx.fillStyle = "red";
+                ctx.fillRect(250, 50, 100, 200);
+
+                ctx.fillStyle = "blue";
+                // ctx.fillRect(10, 50, 100, 200);
+                var heinz = 20*Math.PI/180;
+                var heinz = 0.3490658503988659;
+                console.log(heinz);
+                ctx.rotate(heinz);
+                ctx.fillRect(250, 50, 100, 200);
+            }
+
+            $("#drehen").click(dreheRect);
+        </script>
+
+		<!-- <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p> -->
+	</body>
+</html>

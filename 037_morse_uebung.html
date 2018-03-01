@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>037_morse_uebung</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+        <script src="../script/jquery-3.3.1.min.js"></script>
+        <script src="../script/morse_array.js"></script>
+		<style>
+			div textaerea {
+                
+                display: inline-block;
+                width: 400px;
+                height: 600px;
+                border: 1px solid black;
+            }
+		
+		</style>
+    </head>
+    
+    
+	
+	<body>
+        <h1>037_morse_uebung</h1>
+
+        <button type="button" id="losmors">los mors</button>
+        
+        <div>
+               <textarea id="texteingabe" rows = 20 cols = 50 value="">adsf</textarea>
+               <textarea id="morseausgabe" rows = 20 cols = 50 value="">adsf</textarea>
+        </div>
+
+       
+
+        <script>
+             var losmors = function () {
+                 var eingabetext = $("#texteingabe").val();                
+                 var eingabeArr = eingabetext.split("");
+                 var ausgabeText = "";
+
+                 var eingabeArrLength = eingabeArr.length;
+                 for (var i=0; i<eingabeArrLength; i++ ) {
+                        eingabeArrItem = (eingabeArr[i]).toLowerCase();
+                        ausgabeText += codeArray[eingabeArrItem];
+                 }
+                $("#morseausgabe").text(ausgabeText);
+             }
+
+             var losmors2 = function() {
+                ausgabeText =  codeArray[input.charAt(i)]+" ";]
+             }
+
+		    $("#losmors").click(losmors);
+        </script>
+	</body>
+</html>
