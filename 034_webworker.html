@@ -23,7 +23,7 @@
 	</head>
 	
 	<body>
-        <h2>3 Webworkder <a href="#" id="start">GO</a> </h2>
+        <h2>3 Webworker <a href="#" id="start">GO</a> </h2>
         
         <div id="d1" class="d"></div>
         <div id="d2" class="d"></div>
@@ -31,6 +31,7 @@
 	
         <script>
             var starten = function () {
+console.log("YES");
                 var worker1 = new Worker("../script/webworker1.js");
                 var worker2 = new Worker("../script/webworker2.js");
                 var worker3 = new Worker("../script/webworker3.js");
@@ -52,11 +53,12 @@
                 }
             }
                 
-            $("#start").click(starten);
+            // $("#start").click(starten);
             // $("#start").on("click", starten);
-            // document.getElementById("start").onclick = starten;
+            document.getElementById("start").onclick = starten;
             
 		
         </script>
+        
     </body>
 </html>
