@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Morse-Übung</title>
+		<meta charset="utf-8" />
+		<link href="../styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		
+		<style>
+			div {
+				float: left;
+				width: 47%;
+				margin: 0 1%;
+				border: 1px solid gray;
+				height: 300px;
+				padding: 5px;
+			}
+			#outputDiv { font-size: 2em;}
+		</style>
+		
+	</head>
+	
+	<body>
+	<h2>Morse-Alphabet Übersetzer</h2>
+		<div id="inputDiv" contenteditable="true"></div>
+		<div id="outputDiv"></div>
+	
+	
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<script src="http://10.10.56.134/script/js_functions.js"></script>
+		<script src="http://10.10.56.134/script/morse_array.js"></script>
+		
+		<!-- eigene scripte -->
+		<script>
+			$("#inputDiv").keyup(trans);
+			
+			function trans() {
+				var output = '';
+				var inputArr = $("#inputDiv").text().split('');
+				
+				for(var i=0; i < inputArr.length; i++) {
+					 output += codeArray[inputArr[i]]+" ";
+				}
+				$("#outputDiv").text(output);
+			}
+			
+			
+			function trans2() {
+				var output = '';
+				var input = $("#inputDiv").text();
+				
+				for(var i=0; i < input.length; i++) {
+					 output += codeArray[input.charAt(i)]+" ";
+				}
+				$("#outputDiv").text(output);
+			}
+			
+			
+			$("#inputDivX").keyup(function(evt) {
+				//console.log(evt.keyCode);
+				//console.log(String.fromCharCode(evt.keyCode));
+				
+				var output = '';
+					output = codeArray[String.fromCharCode(evt.keyCode).toLowerCase()]+" ";
+					$("#outputDiv").append(output);
+			});
+		</script>
+	</body>
+</html>

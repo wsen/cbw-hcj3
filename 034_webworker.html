@@ -39,7 +39,6 @@ console.log("YES");
                 worker1.postMessage("1,100000");
                 worker1.onmessage = function(evt) {
                     $('#d1').prepend(evt.data + ' ');
-                    alert("feddisch");
                 }
 
                 worker2.postMessage("100001,200000");
