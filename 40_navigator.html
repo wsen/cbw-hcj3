@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>040 Navigator</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<style>
+			
+		
+		</style>
+
+
+	</head>
+	
+	<body>
+		<h1>El Navigator</h1>
+		<p id="info"></p>
+		
+        <script>
+            var ifo = document.getElementById("info");
+            var text = "Cookies eingeschaltet : " + 
+            (navigator.cookieEnabled?"Ja":"Nein") + "<br>" +  "JavaScript eingeschaltet : " +
+            (navigator.javaEnabled()?"Ja":"Nein") + "<br>";
+            text += "UserAgent : " + navigator.userAgent + "<br>" +
+                "Plattform : " + navigator.platform + "<br>" +
+                "Sprache : " + navigator.language;
+            ifo.innerHTML = text;
+        </script>
+    </body>
+</html>

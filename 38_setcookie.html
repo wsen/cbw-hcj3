@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>38 setcookie</title>
+		<meta charset="utf-8" />
+		<link href="../styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		
+		<style>
+			noscript {
+				color: red;
+				border: 2px dotted red;
+			}
+		</style>
+		
+	</head>
+	
+	<body>
+		<noscript>Sie haben JavaScriptin Ihrem Webbrowser abgeschaltet.</noscript>
+		<h2>Cookie schreiben</h2>
+		cookieName: <input type="text" id="cookieName" value="" required="required" /><br /><br />
+		cookieValue: <input type="text" id="myInput" value="" required="required" />
+		
+		<button type="button" id="hallo">func "hallo"</button>
+		
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<script src="http://10.10.56.134/script/js_functions.js"></script>
+		
+		
+		<!-- eigene scripte -->
+		<script>
+			window.onunload = tschuess;
+			//window.onload = hallo;
+			$("#hallo").click(hallo);
+			
+			$("#myInput").blur(function(evt) {
+				if($("#cookieName").val()!="" && $(this).val()!="") {
+					cookieSchreiben($("#cookieName").val(), $(this).val(), 1);
+				}
+			});
+		
+			// setting the cookie value
+			function cookieSchreiben(cookieName, cookieValue, expirationDays) {
+				var expirationDate = new Date();
+				expirationDate.setDate(expirationDate.getDate() + expirationDays);
+				
+				cookieValue = cookieValue + "; expires=" + expirationDate.toUTCString();
+				document.cookie = cookieName + "=" + cookieValue;
+			}
+			
+			
+			
+			function tschuess() {
+				var heute = new Date();
+				var jetzt = heute.getTime();
+				cookieSchreiben("zuletztHier", jetzt, 365);
+			}
+			function hallo() {
+				var heute = new Date();
+				var jetzt = heute.getTime();
+			
+				var cookieArr = document.cookie.split(";");
+				var ausgabe = "";
+				
+				for (var i = 0; i < cookieArr.length; i++) {
+					var cookie = cookieArr[i];
+					var index = cookie.indexOf("=");
+					var cookieName = cookie.substr(0, index);
+					var cookieInhalt = cookie.substr(index + 1);
+					if(cookieName=="zuletztHier") {
+						break;
+					}
+				}
+				var zeitVerg = jetzt-cookieInhalt;
+				switch(true) {
+					case (zeitVerg<1000):
+					alert("seit dem letzten Besuch sind: " + zeitVerg + " Milisekunden vergangen");
+					break;
+					case (zeitVerg<60000):
+					alert("seit dem letzten Besuch sind: " + (zeitVerg/1000) + " Sekunden vergangen");
+					break;
+					case (zeitVerg<(60000*60)):
+					var anzeige = Math.floor(zeitVerg/60000);
+					alert("seit dem letzten Besuch sind: " + anzeige + " Minuten vergangen");
+					break;
+					case (zeitVerg<(60000*60*24)):
+					var anzeige = Math.round(zeitVerg/60000*60).toFixed(2);
+					alert("seit dem letzten Besuch sind: " + anzeige + " Stunden vergangen");
+					break;
+					
+					default:
+					 alert("Ihr erster Besuch auf dieser Seite");
+					break;
+				}
+			}
+		</script>
+	</body>
+</html>
