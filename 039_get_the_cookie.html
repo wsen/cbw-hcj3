@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>039_get_the cookie</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<!-- <script src="http://10.10.56.134/script/jquery-3.3.1.min.js"></script> -->
+		<style>
+			
+		
+		</style>
+	</head>
+	
+	<body>
+		<h1>039_get_the cookie</h1>
+
+		<p id="ausgabe"></p>
+		<script>
+			function cookieLesen()
+			{
+				var cookieArr = document.cookie.split(";");
+				var ausgabe = "";
+
+				for (var i = 0; i < cookieArr.length; i++) {
+					var cookie = cookieArr[i];
+					var index = cookie.indexOf("=");
+					var key = cookie.substr(0, index);
+					var val = cookie.substr(index + 1);
+					ausgabe += key + " - " + val + "<br />";
+				}
+				document.getElementById("ausgabe").innerHTML = ausgabe;
+				$("#ausgabe").html(ausgabe);
+			}
+
+			window.onload = cookieLesen; 
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>042 Local Storage</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<!-- <script src="http://10.10.56.134/script/jquery-3.3.1.min.js"></script> -->
+		<style>
+            table {
+                border-width: 2px;
+                border-style: solid;
+                color:  black;
+            }
+
+            table img {
+                width: 50%;
+                height: auto;
+            }
+
+			table td {
+                border-width: 1px;
+                border-style: solid;
+                color:  black;
+                border-collapse: collapse;
+                padding:  5px;
+            }
+		
+		
+		</style>
+
+
+	</head>
+	
+	<body>
+        <h2>042 Local Storage</h2>
+        Vorname: <input type="text" name="person" id="vName"><br />
+        Nachname: <input type="text" name="person" id="nName"><br />
+        Email: <input type="text" name="person" id="email"><br />
+        <button id="persSpeichern" type="button" disabled>Personen speichern</button>
+        <hr />
+        <div>
+            <table id="ausgTbl"></table>
+        </div>
+
+    <script>
+        function isWebStorageSupported() {
+            return 'localStorage' in window;
+        }
+
+        if(isWebStorageSupported()) {
+            $("#persSpeichern").removeAttr("disabled");
+            $("#persSpeichern").on("click",savePerson);
+           
+            // localStorage.setItem('firstName', $('#firstName').val());
+            // localStorage.setItem("Lottermann", "Udo");
+            // localStorage.setItem( "Reich", "Wilhelm");
+
+            // localStorage['firstName'] = $('#firstName').val();
+            // //oder
+            // localStorage.firstName = $('#firstName').val();
+            // alert(localStorage.getItem("person1"));
+            var ausgabe = "<tr><th>Nachname</th><th>Vorname</th><th>Email</th><th></th></tr>";
+            var personen = new Array();
+
+
+
+            for(var i=0; i<localStorage.length; i++) {
+                var schluessel = localStorage.key(i);
+                personen.push(schluessel);
+                var wert = localStorage.getItem(schluessel);
+                //console.log(typeof wert);
+                var persArr = JSON.parse(wert);
+                console.log(persArr);
+                ausgabe += "<tr><td>" + persArr[0] + "</td>" +
+                    "<td>" + persArr[1] + "</td>" + 
+                    "<td>" + persArr[2] + "</td>" +
+                    '<td id="'+ schluessel + '" ><button type="button"><img src="../media/images/th.jpg" alt="löschen"></button></td></tr>';
+            }
+            $("#ausgTbl").html(ausgabe);
+            personen.sort();
+            var letzter = personen[personen.length-1];
+            
+            letzterZahl = letzter.replace("person","");
+            console.log(letzter);
+        }
+
+        $('td[id]').click(function() {
+                alert(this.id);
+                if(confirm("Person WIRKLICH löschen?")) {
+                   localStorage.removeItem(this.id);
+                   //$(this).parent().css("display","none");
+                   $(this).parent().attr("style","display:none");
+                   //javascript statt jQuery
+                   //getElementBy
+
+                }
+        });
+
+        function savePerson() { 
+            if($("#vName").val().length>=2 && $("#nName").val().length>=2 && $("#email").val().length>=7) {
+                var person = [$("#vName").val(),$("#nName").val(),$("#email").val()];
+                //var schluessel = "person" + (localStorage.length+1);  
+                var schluessel = "person" + (Number(letzterZahl) +1); 
+
+                localStorage[schluessel] = JSON.stringify(person);
+                //$("#persSpeichern").attr("disabled","disabled");
+                $("#vName").val("");
+                $("#nName").val("");
+                $("#email").val("");
+                window.location.reload();
+            } else {
+                alert("Give the correct values!");
+            }
+        }
+
+        function deletePerson(id) {
+            alert(id);
+            localStorage.removeItem('firstName');
+        }
+
+        $("#persLoeschen").click(deletePerson);
+
+        // function persSave() {
+        //     var person1 = new Array("Lottermann", "Udo","erwein@gmx.de");
+        //     localStorage["person1"] = JSON.stringify(person1);
+        //     // localStorage.setItem('glenn', JSON.stringify(person));
+
+        //     var person2 = new Array("Reich", "Wilhelm","wreich@gmx.de");
+        //     localStorage["person2"] = JSON.stringify(person2);
+
+        //     var person3 = new Array("Huana", "Marie","marie@potmail.de");
+        //     localStorage["person3"] = JSON.stringify(person3);
+        //     MS ID: MS0618263870
+        // https://mva.microsoft.com/en-US/training-courses/adding-style-with-css-8474?l=WQPS1WXz_9104984382
+        // }
+
+    </script>
+</body>
+</html>

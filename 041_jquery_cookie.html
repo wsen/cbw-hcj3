@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>041 jquery cookie</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+        <script src="../script/jquery-3.3.1.min.js"></script>
+        <script src="../script/jquery.cookie.js"></script>
+		<!-- <script src="http://10.10.56.134/script/jquery-3.3.1.min.js"></script> -->
+		<style>
+			
+		
+		</style>
+	</head>
+	
+	<body>
+		<h1>041 jquery cookie</h1>
+		
+        <script>
+            // $.cookie();
+            // $.cookie("cookieName","cookieInhalt");
+            // var coockieInhalt = $.cookie("cookieName");
+           // alert($cookie().length);
+            // return;
+
+            var x = new Date();
+            x.setTime($.cookie('zuletztHier'));
+            document.write(x.toGMTString());
+		</script>
+    </body>
+</html>
