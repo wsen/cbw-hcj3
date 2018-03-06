@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Seitentitel</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<!-- <script src="http://10.10.56.134/script/jquery-3.3.1.min.js"></script> -->
+		<style>
+			
+		
+		</style>
+
+		
+	</head>
+	
+	<body>
+            <script>
+                var iteration = 0;
+                var timerId = 0;
+                function foo() {
+                    console.log("gestartet");
+                    document.write("Funktion foo() schreibt.<br />");
+                    timerId = setTimeout(foo, 2000);
+                }
+                foo();
+                if(timerId){
+                   setTimeout(function() { clearTimeout(timerId)}, 10000);
+                }
+    
+                
+            </script>
+	</body>
+</html>
