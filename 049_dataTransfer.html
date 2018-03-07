@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>049_dataTransfer</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		
+		<!-- <script src="http://10.10.56.134/script/jquery-3.3.1.min.js"></script> -->
+		<style>
+			
+		
+		</style>
+
+
+	</head>
+	
+	<body>
+        <h1>049_dataTransfer</h1>
+        <p>What items do you like?</p>
+        <ul id="carList">
+            <li draggable="true" data-value="car,Chevrolet">Chevrolet</li>
+            <li draggable="true" data-value="car,Ford">Ford</li>
+            <li draggable="true" data-value="ship,Aida">Aida</li>
+            <li draggable="true" data-value="car,BMW">BMW</li>
+        </ul>
+        <p>Drop your favorite cars below:</p>
+        <ul id="favoriteCars" style="min-height:100px;background-color:yellow;">
+        </ul>
+
+        <script src="../script/jquery-3.3.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                //jQuery.event.props.push('dataTransfer');
+                $('#carList').on('dragstart', dragging);
+                $('#favoriteCars').on('dragenter', preventDefault);
+                $('#favoriteCars').on('dragover', preventDefault);
+                $('#favoriteCars').on('drop', dropItem);
+            });
+
+            function dragging(e) {
+                var val = e.target.getAttribute('data-value');
+                e.originalEvent.dataTransfer.setData("text",val);
+                e.originalEvent.dataTransfer.effectAllowed = "copy";
+
+                // e.dataTransfer.setData('text', val);
+                // e.dataTransfer.effectAllowed = 'copy';
+            }
+
+            function preventDefault(e) {
+                e.preventDefault();
+            }
+
+            function dropItem(e) {
+                preventDefault(e);
+                //var data = e.dataTransfer.getData('text').split(',');
+                var data = e.originalEvent.dataTransfer.getData('text').split(',');
+                if (data[0] == 'car' || data[0] == 'ship') {
+                    var li = document.createElement('li');
+                    li.textContent = data[1];
+                    e.target.appendChild(li);
+                }
+            }
+        </script>
+    </body>
+</html>
