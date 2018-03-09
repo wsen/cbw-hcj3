@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Q 51 +292</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<!-- <script src="http://10.10.56.134/script/jquery-3.3.1.min.js"></script> -->
+		<style>
+			a[href^="http://"] {
+                font-weight: bold;
+			}
+			.underlineMe {
+				background-color: blueviolet
+			}
+			
+			.flex-container {
+				display: flex;
+				background-color: DodgerBlue;
+			}
+
+			.flex-container > div {
+				background-color: #f1f1f1;
+				margin: 10px;
+				padding: 20px;
+				font-size: 30px;
+			}
+		
+		</style>
+
+		<script>
+		var customer  = function(){
+        var name = "Contoso";
+            return {
+                getName: function(){
+                    return name;
+                },
+                setName: function(newName){
+                    name = newName;
+                }
+            };
+        }();
+        //alert(customer.name)
+		</script>
+	</head>
+	
+	<body>
+
+		<h1>Q 51 + 292 General Formatting of LInks & Headers</h1>
+        <h2>zweite &Uuml;berschrift der Seite</h2>
+        <a href="http://www.heise.de">heise</a>
+        <a href="/C/xampp/htdocs/HCJ3/personen.xml">leise</a>
+
+		<h1>Show :header jQ</h1>
+        <h2>zweite &Uuml;berschrift der Seite</h2>
+		
+		<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+		<div class="flex-container">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
+		<script>
+		console.log(Number.isNaN(123)); //false
+		console.log(Number.isNaN(-1.23)); //false
+		console.log(Number.isNaN(5-2)); //false
+		console.log(Number.isNaN(0)); //false
+		console.log(Number.isNaN('123')); //false
+		console.log(Number.isNaN('Hello')); //false
+		console.log(Number.isNaN('2005/12/12')); //false
+		console.log(Number.isNaN('')); //false
+		console.log(Number.isNaN(true)); //false
+		console.log(Number.isNaN(undefined)); //false
+		console.log(Number.isNaN('NaN')); //false
+		console.log(Number.isNaN(NaN)); //true
+		console.log(Number.isNaN(0 / 0)); //true
+		console.log(Number.isNaN(3*8)); //false
+		console.log(Number.isNaN('5')); //false
+		
+		
+		</script>	  
+		
+		<script>
+		$(":header").css({ color: 'red' });
+		$(":header").addClass('underlineMe');
+		
+		</script>
+	</body>
+</html>

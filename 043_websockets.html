@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>043 WebSocket Test</title>
+		<meta charset="utf-8" />
+		<link href="./styles/global_style.css" type="text/css" rel="stylesheet" media="screen" />
+		<script src="../script/jquery-3.3.1.min.js"></script>
+		<!-- <script src="http://10.10.56.134/script/jquery-3.3.1.min.js"></script> -->
+		<style>
+			
+		
+		</style>
+		<script>
+        //"useStrict";
+        var wsUri = 'ws://echo.websocket.org/';
+        var webSocket;
+        var timerId=0;
+        var closeCount=11;
+
+		function checkSupported() {
+            if (window.WebSocket) {
+                writeOutput('WebSockets supported!');
+                return true;
+            }
+            else {
+                writeOutput('WebSockets NOT supported');
+                $('#btnSend').attr('disabled', 'disabled');
+                return false;
+            }
+        }
+
+        function writeOutput(message) {
+            var output = $("#divOutput");
+            output.html(output.html() + '<br />' + message);
+        }
+
+        function connect() {
+            webSocket = new WebSocket(wsUri);
+            webSocket.onopen = function (evt) { onOpen(evt) };
+            webSocket.onclose = function (evt) { onClose(evt) };
+            webSocket.onmessage = function (evt) { onMessage(evt) };
+            webSocket.onerror = function (evt) { onError(evt) };
+        }
+
+        function keepAlive() {
+            var timeout = 2000;
+            if (webSocket.readyState == webSocket.OPEN) {
+                webSocket.send('Wann ist schluss???');
+            }
+            timerId = setTimeout(keepAlive, timeout); //also alle 2 Sekunden
+        }
+
+        function cancelKeepAlive() {
+            if (timerId) {
+                clearTimeout(timerId);
+            }
+        }
+
+        function doSend() {
+            if (webSocket.readyState != webSocket.OPEN) {
+                writeOutput("NOT OPEN: " + $('#txtMessage').val());
+                return;
+            }
+            writeOutput("SENT: " + $('#txtMessage').val());
+            webSocket.send($('#txtMessage').val());
+        }
+
+        function onOpen(evt) {
+            writeOutput("CONNECTED");
+            //keepAlive();
+        }
+        function onClose(evt) {
+            cancelAlive();
+            writeOutput("DISCONNECTED");
+        }
+        
+        function onMessage(evt) {
+                writeOutput('RESPONSE: ' + evt.data);
+                if(timerId==10) {
+                    console.log(timerID);
+                    webSocket.onclose();
+                }
+        }
+
+        function onError(evt) {
+            writeOutput('ERROR: ' + evt.data);
+        }
+
+        // weil hier im head, im body überflüssig!
+        $(document).ready(function () {
+            if (checkSupported()) {
+                connect();
+                $('#btnSend').click(doSend);
+            }
+        });
+		</script>
+	</head>
+	
+	<body>
+        <h2>043 WebSocket Test</h2>
+        Enter Message: <input type="text" id="txtMessage" />
+        <button type="button" id="btnSend">Send</button><br />
+        <div id="divOutput"></div> 
+    </body>
+</html>
